@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <div>
+                    <form id="myForm" onsubmit="return false">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="fname" class="form-label">First Name</label>
+                                <input required type="text" class="form-control" id="fname" >
+                                <p class="text-sm color-danger text-danger" id="err-fname" style="display: none;">feild Required..</p>
+
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="lname" class="form-label">Last Name</label>
+                                <input required type="text" class="form-control" id="lname" >
+                                <p class="text-sm color-danger text-danger" id="err-lname" style="display: none;">feild Required..</p>
+                            </div>
+                        </div>
+                        <div class="row">                  
+                            <div class="mb-3 col-6">
+                                <label for="dob" class="form-label">DOB</label>
+                                <input required type="date" class="form-control" id="dob" >
+                                <p class="text-sm color-danger text-danger" id="err-dob" style="display: none;">feild Required..</p>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="country" class="form-label" >Country</label><br>
+                                <select class="form-select" id="country" style="height: 35px;">
+                                    <option value="notChoosed">---------Choose----------</option>
+                                    <option value="India">India</option>
+                                    <option value="China">China</option>
+                                    <option value="USA">USA</option>
+                                    <option value="HongKong">HongKong</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="France">France</option>
+                                </select>
+                                <p class="text-sm color-danger text-danger" id="err-country" style="display: none;">feild Required..</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="profession" class="form-label" >Profession</label>
+                                <input required type="text" class="form-control" id="profession" required>
+                                <p class="text-sm color-danger text-danger" id="err-pro" style="display: none;">feild Required..</p>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="form-label">Gender</label>
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input required class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                    <label class="form-check-label" for="female">Female</label>
+            
+                                </div>
+                                <p class="text-sm color-danger text-danger" id="err-gender" style="display: none;">feild Required..</p>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" required>
+                            <p class="text-sm color-danger text-danger" id="err-email" style="display: none;">feild Required..</p>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                            <p class="text-sm color-danger text-danger" id="err-phone" style="display: none;">feild Required..</p>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary mr-2" onclick="validateForm()">Submit</button>
+                        <button type="button" class="btn btn-warning" onclick="resetForm()">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Form Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" onclick="resetForm()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- <table class="table">
+                        <tr>
+                            <td>First Name</td>
+                            <td><span id="modal-fname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td><span id="modal-lname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>DOB</td>
+                            <td><span id="modal-dob"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Country</td>
+                            <td><span id="modal-country"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Profession</td>
+                            <td><span id="modal-profession"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td><span id="modal-gender"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><span id="modal-email"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td><span id="modal-phone"></span></td>
+                        </tr>
+                    </table> -->
+                    <p>First Name: <span id="modal-fname"></span></p>
+                    <p>Last Name: <span id="modal-lname"></span></p>
+                    <p>DOB: <span id="modal-dob"></span></p>
+                    <p>Country: <span id="modal-country"></span></p>
+                    <p>Profession: <span id="modal-profession"></span></p>
+                    <p>Gender: <span id="modal-gender"></span></p>
+                    <p>Email: <span id="modal-email"></span></p>
+                    <p>Phone Number: <span id="modal-phone"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js">
+        
+    </script>
+</body>
+</html>
